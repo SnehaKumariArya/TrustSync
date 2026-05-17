@@ -319,6 +319,9 @@ def api_post_rating():
     conn.close()
     return jsonify({"status": "success", "message": "External platform rating logged successfully."}), 200
 
+# Call init_db() globally here so it runs automatically on Render's cloud containers
+init_db()
+
 if __name__ == '__main__':
-    init_db()
+    # Local debugging parameters (Only triggers during 'python app.py' desktop execution)
     app.run(debug=True, use_reloader=True, reloader_type='stat')
